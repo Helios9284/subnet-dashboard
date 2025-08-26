@@ -8,11 +8,13 @@ dotenv.config();
 
 connectDB();
 
+
 const allowedOrigins = [
-  'https:https://rdo-landingpage.vercel.app', // Your frontend's production URL 
+  'https://rdo-landingpage.vercel.app' // Your frontend's production URL
 ];
 
 const app = express();
+// app.use(cors());
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (e.g., server-to-server requests)
