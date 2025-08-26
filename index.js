@@ -9,24 +9,19 @@ dotenv.config();
 connectDB();
 const app = express();
 
-const allowedOrigins = [
-  'https://rdo-landingpage.vercel.app/',
-  'https://localhost:3000'
-];
+// const allowedOrigins = [
+//   'https://rdo-landingpage.vercel.app/',
+//   'https://localhost:3000'
+// ];
 // app.use(cors());
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (e.g., server-to-server requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: false, // Set to true if you need cookies or auth headers
-}));
+const corsOptions = {
+  origin: ['http://localhost:3000', 'https://https://rdo-landingpage.vercel.app'],
+  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+};
+
+app.use(cors(corsOptions));
+
 
 app.use(express.json());
 
