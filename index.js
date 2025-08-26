@@ -10,7 +10,8 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  'https://rdo-landingpage.vercel.app/', // Your frontend's production URL
+  'https://rdo-landingpage.vercel.app/',
+  'https:localhost:3000'
 ];
 // app.use(cors());
 
