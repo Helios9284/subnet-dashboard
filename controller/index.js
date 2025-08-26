@@ -1,5 +1,5 @@
-const walletController = require('./wallet.controller');
+const history = require('./statusHistory');
 
 module.exports = {
-    walletController,
+    history
 }

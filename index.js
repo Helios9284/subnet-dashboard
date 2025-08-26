@@ -7,26 +7,8 @@ const PORT = process.env.PORT || 8000;
 dotenv.config();
 
 connectDB();
-
-
-const allowedOrigins = [
-  'https://rdo-landingpage.vercel.app' // Your frontend's production URL
-];
-
 const app = express();
-// app.use(cors());
-app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (e.g., server-to-server requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: false, // Set to true if you need cookies or auth headers
-}));
+app.use(cors());
 app.use(express.json());
 
 app.use(bodyParser.json());
