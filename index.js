@@ -11,7 +11,7 @@ const app = express();
 
 const allowedOrigins = [
   'https://rdo-landingpage.vercel.app/',
-  'https:localhost:3000'
+  'https://localhost:3000'
 ];
 // app.use(cors());
 
