@@ -38,9 +38,29 @@ app.use(bodyParser.urlencoded({
 
 // import router:
 // const routes = require('./routes');
-const routes = require('./routes');
+// const routes = require('./routes');
 
-app.use('/',routes);
+// app.use('/',routes);
+
+app.get ('/save/getHistory', async (req, res) => {
+    try{
+        console.log("0000000000")
+        const history = await StatusHistory.find().sort({ timestamp: -1 });
+        if(!history){
+            return res.status(404).json({ 
+                success: false, 
+                message: 'No history found' });
+        }
+        return res.status(200).json({ 
+            success: true, 
+            data: history });
+    } catch(error){
+        console.log(error)
+        return res.status(500).json({ 
+            success: false, 
+            message: 'Server Error' });
+    }
+})
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on http://localhost:${PORT}`);
