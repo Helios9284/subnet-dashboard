@@ -13,11 +13,14 @@ const app = express();
 //   'https://rdo-landingpage.vercel.app/',
 //   'https://localhost:3000'
 // ];
-// app.use(cors());
+app.use(cors());
 
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://https://rdo-landingpage.vercel.app'],
-  optionsSuccessStatus: 200 // Some legacy browsers choke on 204
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 };
 
 app.use(cors(corsOptions));
